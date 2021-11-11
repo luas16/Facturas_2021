@@ -1,0 +1,43 @@
+{% extends 'list.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% block head_list %}
+    <link href="{% static 'lib/jquery-ui-1.12.1/jquery-ui.min.css' %}" rel="stylesheet"/>
+    <script src="{% static 'lib/jquery-ui-1.12.1/jquery-ui.min.js' %}"></script>
+    <link href="{% static 'lib/select2-4.1.0/css/select2.min.css' %}" rel="stylesheet"/>
+    <link href="{% static 'lib/select2-4.1.0/css/select2-bootstrap4.min.css' %}" rel="stylesheet"/>
+    <script src="{% static 'lib/select2-4.1.0/js/select2.min.js' %}"></script>
+    <script src="{% static 'lib/select2-4.1.0/js/i18n/es.js' %}"></script>
+    <script src="{% static 'lib/moment-2.25.3/moment-with-locales.js' %}"></script>
+    <script src="{% static 'lib/tempusdominus-bootstrap-4/tempusdominus-bootstrap-4.min.js' %}"></script>
+    <link href="{% static 'lib/tempusdominus-bootstrap-4/tempusdominus-bootstrap-4.min.css' %}" rel="stylesheet"/>
+    <link href="{% static 'lib/bootstrap-touchspin-4.3.0/jquery.bootstrap-touchspin.css' %}" rel="stylesheet"/>
+    <script src="{% static 'lib/bootstrap-touchspin-4.3.0/jquery.bootstrap-touchspin.js' %}"></script>
+    <script src="{% static 'sale/js/form.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+    <div class="card card-primary">
+        <div class="card-header">
+            <h3 class="card-title"> Estado de la factura</h3>
+            <h3 class="card-title">
+                <i class="fas fa-construction"></i>
+
+            </h3>
+        </div>
+        <div class="card-body">
+            <div class="card-title">
+                <h1>Lo sentimos, esta pagina aun esta en construccion </h1>
+            </div>
+        </div>
+
+
+    </div>
+    <div class="m-0 row justify-content-center">
+        <div class="col-auto p-5">
+            <div class="fas fa-tools fa-10x"></div>
+            <a href="{% url 'ctrl:sale_list' %}"> Regresar</a>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,97 @@
+{% extends 'login/base.html' %}
+{% load widget_tweaks %}
+{% block content %}
+    <div class="container">
+        <header>
+
+            <h1><a href="{% url 'index' %}">Control de Facturas<span> Importadora S.A </span></a></h1>
+            <a href="{% url 'index' %}">Regresar a Pagina Principal</a>
+
+
+        </header>
+        <section>
+            <div id="container_demo" class="hijo">
+                <a class="hiddenanchor" id="toregister"></a>
+                <a class="hiddenanchor" id="tologin"></a>
+                <div id="wrapper">
+                    <div id="login" class="animate form">
+                        <form action="." method="post">
+                            <input type="hidden" name="next" value="{{ next }}">
+                            {% csrf_token %}
+                            <h1>Inciar</h1>
+                            <p>
+                                <label for="username" class="uname" data-icon="u">Ingrse su Usuario</label>
+                                {{ form.username|add_class:'input'|attr:'autocomplete:off'|attr:'placeholder:Ingrese su usuario'| attr:'required:required' }}
+                            </p>
+                            <p>
+                                <label for="password" class="youpasswd" data-icon="p">Ingrese su Contraseña</label>
+                                {{ form.password|add_class:'input'|attr:'autocomplete:off'|attr:'placeholder:Ingrese su contraseña' | attr:'required:required' }}
+                            </p>
+                            <p class="login button">
+                                <input type="submit" value="Ingresar"/>
+                            </p>
+                            <p class="change_link">
+                                No posee cuenta?
+                                <a href="#toregister" class="to_register">Registrarse</a>
+                            </p>
+                        </form>
+                    </div>
+
+                    <div id="register" class="animate form">
+                        <form action="#" autocomplete="on">
+                            <h1> Registro </h1>
+                            <p>
+                                <label for="usernamesignup" class="uname" data-icon="u">Ingrese su usuario</label>
+                                <input id="usernamesignup" name="usernamesignup" required="required" type="text"
+                                       placeholder="Usuario"/>
+                            </p>
+                            <p>
+                                <label for="emailsignup" class="youmail" data-icon="e">Ingrese su correo</label>
+                                <input id="emailsignup" name="emailsignup" required="required" type="email"
+                                       placeholder="Correo"/>
+                            </p>
+                            <p>
+                                <label for="passwordsignup" class="youpasswd" data-icon="p">Ingrese su
+                                    contraseña </label>
+                                <input id="passwordsignup" name="passwordsignup" required="required" type="password"
+                                       placeholder="Contraseña"/>
+                            </p>
+                            <p>
+                                <label for="passwordsignup_confirm" class="youpasswd" data-icon="p">Confirme su
+                                    contraseña </label>
+                                <input id="passwordsignup_confirm" name="passwordsignup_confirm" required="required"
+                                       type="password" placeholder="Contraseña"/>
+                            </p>
+                            <p class="signin button">
+                                <input type="submit" value="Registrar"/>
+                            </p>
+                            <p class="change_link">
+                                Tiene cuenta ?
+                                <a href="#tologin" class="to_register"> Regresar a login </a>
+                            </p>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        <script type="application/javascript">
+            {% if form.errors %}
+                var errors = '';
+                {% for field in form %}
+                    {% for error in field.errors %}
+                        errors += '{{ error }}\n';
+                    {% endfor %}
+                {% endfor %}
+                {% for error in form.non_field_errors %}
+                    errors += '{{ error }}\n';
+                {% endfor %}
+                Swal.fire({
+                    title: 'Error!',
+                    text: errors,
+                    icon: 'error'
+                });
+            {% endif %}
+        </script>
+    </div>
+{% endblock %}
